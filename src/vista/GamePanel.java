@@ -64,14 +64,14 @@ public class GamePanel extends JPanel {
 
 	//Imagenes enemigos
 	private Image imgDuckH1, imgDuckH2, imgDuckV1, imgDuckV2, imgRockProjectile;
-	private Image imgSkeleton;
+	private Image imgGatoKnight;
 	private Image imgEnemyDeath1,imgEnemyDeath2,imgEnemyDeath3,imgEnemyDeath4;
 	private Image imgGohmaLeg1, imgGohmaLeg2, imgGohmaEye1, imgGohmaEye2, imgGohmaEye3, imgGohmaEye4;
-	private Image imgZoraUp, imgZoraDown, imgZoraAppearing1, imgZoraAppearing2;
+	private Image imgFrogUp, imgFrogDown, imgZoraAppearing1, imgZoraAppearing2;
 	private Image imgDiagonalProjectile1,imgDiagonalProjectile2,imgDiagonalProjectile3,imgDiagonalProjectile4;
 	private Image imgGoatDown, imgGoatUp, imgGoatHorizontal1, imgGoatHorizontal2;
 	//Imagenes HUD
-	private Image imgHeartHUD, imgEmptyHeartHUD, imgHalfHeartHUD, imgKeyHUD, imgRupeeHUD;
+	private Image imgHeartHUD, imgEmptyHeartHUD, imgHalfHeartHUD, imgKeyHUD, imgLemonHUD;
 
 	//Imagenes Items
 	private Image imgHeart, imgHalfHeart, imgRupee, imgBlueRupee, imgKey, imgHeartContainer, imgBow;
@@ -168,7 +168,7 @@ public class GamePanel extends JPanel {
 		imgPlayerActionDown=new ImageIcon(getClass().getResource("/Resources/Sprites/Player/ActionDown.PNG")).getImage();
 		imgPlayerActionHorizontal=new ImageIcon(getClass().getResource("/Resources/Sprites/Player/ActionHorizontal.PNG")).getImage();
 		imgPlayerActionUp=new ImageIcon(getClass().getResource("/Resources/Sprites/Player/ActionUp.PNG")).getImage();
-		imgSkeleton=new ImageIcon(getClass().getResource("/Resources/Sprites/Enemy/Skeleton/Skeleton.PNG")).getImage();
+		imgGatoKnight=new ImageIcon(getClass().getResource("/Resources/Sprites/Enemy/Skeleton/GatoKnight.PNG")).getImage();
 		imgDuckH1=new ImageIcon(getClass().getResource("/Resources/Sprites/Enemy/Octorok/DuckHorizontal1.PNG")).getImage();
 		imgDuckH2=new ImageIcon(getClass().getResource("/Resources/Sprites/Enemy/Octorok/DuckHorizontal2.PNG")).getImage();
 		imgDuckV1=new ImageIcon(getClass().getResource("/Resources/Sprites/Enemy/Octorok/DuckVertical1.PNG")).getImage();
@@ -178,7 +178,7 @@ public class GamePanel extends JPanel {
 		imgEmptyHeartHUD=new ImageIcon(getClass().getResource("/Resources/Sprites/HUD/EmptyHeartHUD.PNG")).getImage();
 		imgHalfHeartHUD=new ImageIcon(getClass().getResource("/Resources/Sprites/HUD/HalfHeartHUD.PNG")).getImage();
 		imgKeyHUD=new ImageIcon(getClass().getResource("/Resources/Sprites/HUD/KeyHUD.PNG")).getImage();
-		imgRupeeHUD=new ImageIcon(getClass().getResource("/Resources/Sprites/HUD/RupeeHUD.PNG")).getImage();
+		imgLemonHUD=new ImageIcon(getClass().getResource("/Resources/Sprites/HUD/LemonHUD.PNG")).getImage();
 		imgHeart=new ImageIcon(getClass().getResource("/Resources/Sprites/Items/Heart.PNG")).getImage();
 		imgKey=new ImageIcon(getClass().getResource("/Resources/Sprites/Items/Key.PNG")).getImage();
 		imgHeartContainer=new ImageIcon(getClass().getResource("/Resources/Sprites/Items/HeartContainer.PNG")).getImage();
@@ -230,8 +230,8 @@ public class GamePanel extends JPanel {
 		imgDiagonalProjectile2=new ImageIcon(getClass().getResource("/Resources/Sprites/Enemy/Gohma/DiagonalProjectile2.PNG")).getImage();
 		imgDiagonalProjectile3=new ImageIcon(getClass().getResource("/Resources/Sprites/Enemy/Gohma/DiagonalProjectile3.PNG")).getImage();
 		imgDiagonalProjectile4=new ImageIcon(getClass().getResource("/Resources/Sprites/Enemy/Gohma/DiagonalProjectile4.PNG")).getImage();
-		imgZoraUp=new ImageIcon(getClass().getResource("/Resources/Sprites/Enemy/Zora/ZoraUp.PNG")).getImage();
-		imgZoraDown=new ImageIcon(getClass().getResource("/Resources/Sprites/Enemy/Zora/ZoraDown.PNG")).getImage();
+		imgFrogUp=new ImageIcon(getClass().getResource("/Resources/Sprites/Enemy/Zora/FrogUp.PNG")).getImage();
+		imgFrogDown=new ImageIcon(getClass().getResource("/Resources/Sprites/Enemy/Zora/FrogDown.PNG")).getImage();
 		imgZoraAppearing1=new ImageIcon(getClass().getResource("/Resources/Sprites/Enemy/Zora/Appearing1.PNG")).getImage();
 		imgZoraAppearing2=new ImageIcon(getClass().getResource("/Resources/Sprites/Enemy/Zora/Appearing2.PNG")).getImage();
 		imgBow=new ImageIcon(getClass().getResource("/Resources/Sprites/Items/Bow.PNG")).getImage();
@@ -873,13 +873,13 @@ public class GamePanel extends JPanel {
 						}else if(e instanceof FollowerEnemy) {
 						if(e.isBeingAttacked()) {
 							if(e.getAttackedFrames()) {
-								g.drawImage(imgSkeleton, e.getY(), e.getX(), 15*SCALE, 16*SCALE, this);
+								g.drawImage(imgGatoKnight, e.getY(), e.getX(), 15*SCALE, 16*SCALE, this);
 							}
 						}else {
 							if(e.getWalkFrames()) {
-								g.drawImage(imgSkeleton, e.getY(), e.getX(), 15*SCALE, 16*SCALE, this);
+								g.drawImage(imgGatoKnight, e.getY(), e.getX(), 15*SCALE, 16*SCALE, this);
 							}else {
-								g.drawImage(imgSkeleton, e.getY()+15*SCALE, e.getX(), -15*SCALE, 16*SCALE, this);
+								g.drawImage(imgGatoKnight, e.getY()+15*SCALE, e.getX(), -15*SCALE, 16*SCALE, this);
 							}
 						}
 					}else if(e instanceof TourretEnemy){
@@ -892,15 +892,15 @@ public class GamePanel extends JPanel {
 								}
 							}else if(e.isBeingAttacked()){
 								if(e.getAttackedFrames()) {
-									g.drawImage(imgZoraUp, e.getY(), e.getX(), 16*SCALE, 16*SCALE, this);
+									g.drawImage(imgFrogUp, e.getY(), e.getX(), 16*SCALE, 16*SCALE, this);
 								}
 							}else {
 								switch(e.getDirection()) {
 								case UP:
-									g.drawImage(imgZoraUp, e.getY(), e.getX(), 16*SCALE, 16*SCALE, this);
+									g.drawImage(imgFrogUp, e.getY(), e.getX(), 16*SCALE, 16*SCALE, this);
 									break;
 								case DOWN:
-									g.drawImage(imgZoraDown, e.getY(), e.getX(), 16*SCALE, 16*SCALE, this);
+									g.drawImage(imgFrogDown, e.getY(), e.getX(), 16*SCALE, 16*SCALE, this);
 									break;
 								default:
 									break;
@@ -1121,7 +1121,7 @@ public class GamePanel extends JPanel {
 
 
 		g.fillRect(SCREEN_WIDTH-180, 5, (2*SCALE*TILES_RES)+35, 22*SCALE);
-		g.drawImage(imgRupeeHUD, SCREEN_WIDTH-170,15, 8*SCALE, 8*SCALE, this);
+		g.drawImage(imgLemonHUD, SCREEN_WIDTH-170,15, 8*SCALE, 8*SCALE, this);
 		g.setColor(Color.WHITE);
 		g.setFont(font);
 		g.drawString("x" + player.getMoney(), SCREEN_WIDTH-110, 37);
