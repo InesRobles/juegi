@@ -9,9 +9,12 @@ import java.awt.event.KeyEvent;
 
 import javax.swing.JPanel;
 
+import net.java.games.input.Component;
 import utiles.BackgroundMusic;
 
 public class Intro extends JPanel {
+	private net.java.games.input.Controller gamepad;
+	
 	private final int TILES_RES=16;
 	private final int HEIGHT=11;
 	private final int WIDTH=16;
@@ -90,4 +93,5 @@ public class Intro extends JPanel {
         g.setFont(font.deriveFont(20f));
         g.drawString("ENTER para continuar", SCREEN_WIDTH/2 - 80, SCREEN_HEIGHT - 50);
     }
+    
 }

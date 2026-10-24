@@ -92,9 +92,6 @@ public class ImputController implements KeyListener {
 	        if (p == Component.POV.UP || p == Component.POV.UP_LEFT || p == Component.POV.UP_RIGHT) stickY = -1;
 	        if (p == Component.POV.DOWN || p == Component.POV.DOWN_LEFT || p == Component.POV.DOWN_RIGHT) stickY = 1;
 	    }
-
-	    Component a = gamepad.getComponent(Component.Identifier.Button._0);
-	    Component b = gamepad.getComponent(Component.Identifier.Button._1);
 	    
 	    
 	    botonA     = isButtonDown(Component.Identifier.Button._0);
@@ -147,6 +144,7 @@ public class ImputController implements KeyListener {
 	            || isKeyPressed(KeyEvent.VK_M)
 	            || botonB || botonY;
 	}
+	
 	public boolean pause() {
 	    return isKeyPressed(KeyEvent.VK_ESCAPE) || botonStart;
 	}

@@ -87,7 +87,7 @@ public class GameWindow extends JFrame {
 	public void setController(GameController gc) {
 		this.gc=gc;
 	}
-
+	
 	public void showMainMenu() {
 		music.stop();
 		music.play("/Resources/SFX/Music/TitleScreen.wav");

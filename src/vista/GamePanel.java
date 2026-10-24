@@ -615,9 +615,9 @@ public class GamePanel extends JPanel {
 						}
 					}else if(i instanceof Rupee) {
 						if(i.getAmount()==10) {
-							g.drawImage(imgRupee,i.getY(),i.getX(), 7*(SCALE+1), 8*(SCALE+1), this);
+							g.drawImage(imgRupee,i.getY(),i.getX(), 4*(SCALE+1), 8*(SCALE+1), this);
 						}else if(i.getAmount()==20) {
-							g.drawImage(imgBlueRupee,i.getY(),i.getX(), 7*(SCALE+1), 8*(SCALE+1), this);
+							g.drawImage(imgBlueRupee,i.getY(),i.getX(), 4*(SCALE+1), 8*(SCALE+1), this);
 						}
 					}else if(i instanceof Key) {
 						g.drawImage(imgKey,i.getY(),i.getX(), 8*SCALE, 16*SCALE, this);

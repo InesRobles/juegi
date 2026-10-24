@@ -6,7 +6,11 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="lib" path="C:/Users/inesr/Downloads/jinput-2.0.10.jar"/>
+	<classpathentry kind="lib" path="C:/Users/inesr/Downloads/jinput-2.0.10.jar">
+		<attributes>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="C:/Users/inesr/OneDrive/Escritorio/Three_Keys_Quest-main/Three_Keys_Quest-main/lib/natives"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="lib" path="C:/Users/inesr/Downloads/jinput-2.0.10-natives-all.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
