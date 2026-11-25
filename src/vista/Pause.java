@@ -42,11 +42,11 @@ public class Pause extends JPanel {
 	    });
 		
 		try {
-			Font font = Font.createFont(Font.TRUETYPE_FONT, getClass().getResourceAsStream("/Resources/Fonts/menuFont.ttf"));
-			setFont(font.deriveFont(30f));
+		    font = Font.createFont(Font.TRUETYPE_FONT, getClass().getResourceAsStream("/Resources/Fonts/menuFont.ttf")).deriveFont(30f);
+		    setFont(font);
 		} catch (Exception e) {
-			//Si por lo que sea no se encuentra el archivo se le da uina fuente por defecto
-			setFont(new Font("Arial", Font.BOLD, 30));
+		    font = new Font("Arial", Font.BOLD, 30);
+		    setFont(font);
 		}
 		
 		JLabel titulo = new JLabel("PAUSA");

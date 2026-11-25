@@ -58,7 +58,6 @@ public class TackleEnemy extends Enemy {
 						movingTimer = 0;
 						changeDirection(); 
 					}
-
 					move();
 					Detection(player);
 				}

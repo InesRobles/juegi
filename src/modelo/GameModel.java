@@ -128,7 +128,7 @@ public class GameModel {
 		items.add(new Key(18, 1,310,780,false,0, false));
 
 		//Objetos sala 19
-		items.add(new Key(19, 1,225,483,false,0, false));
+		items.add(new Key(19, 1,220,500,false,0, false));
 
 		//Objetos tienda
 		items.add(new HeartContainer(22, 2, 375, 350, false, 60, false));
