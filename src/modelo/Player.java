@@ -34,7 +34,7 @@ public class Player extends Entity {
 		maxHealth=6;
 		sound = new SoundEffects();
 		dyingTimer=160;
-		keys=0;
+		keys=3;
 		money=0;
 		bowObtained=true;
 		action=false;
@@ -117,6 +117,7 @@ public class Player extends Entity {
 			e.setTackling(false);
 		}
 	}
+	
 	public void hurt(int damaged, Direction attackdirection) {
 		sound.play("/Resources/SFX/Soundeffects/LinkHurt.wav");
 		health-=damaged;

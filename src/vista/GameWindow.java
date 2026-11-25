@@ -1,5 +1,6 @@
 package vista;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Image;
 
 import javax.swing.ImageIcon;
@@ -9,6 +10,14 @@ import javax.swing.JLayeredPane;
 import controlador.GameController;
 import modelo.GameModel;
 import utiles.BackgroundMusic;
+import java.awt.GraphicsDevice;
+import java.awt.GraphicsEnvironment;
+import java.awt.event.ActionEvent;
+import javax.swing.AbstractAction;
+import javax.swing.JComponent;
+import javax.swing.JLayer;
+import javax.swing.JPanel;
+import javax.swing.KeyStroke;
 public class GameWindow extends JFrame {
 	private final int TILES_RES=16;
 	private final int HEIGHT=11;
@@ -29,9 +38,11 @@ public class GameWindow extends JFrame {
 	private Credits credits;
 	private GameController gc;
 	private BackgroundMusic music;
+	private boolean fullscreen = false;
 	public GameWindow(GameModel g) {
 		setTitle("Three Keys Quest");
-		setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
+		getContentPane().setPreferredSize(new Dimension(SCREEN_WIDTH, SCREEN_HEIGHT));
+		pack();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setResizable(false);
 		setLocationRelativeTo(null);
@@ -76,11 +87,57 @@ public class GameWindow extends JFrame {
 		credits.setVisible(false);
 		layeredPane.add(credits, JLayeredPane.DRAG_LAYER);
 
-		add(layeredPane);
+		// El layeredPane se queda SIEMPRE en 1024x704; el JLayer es quien lo escala
+		JPanel holder = new JPanel(null);
+		holder.setBackground(Color.BLACK);
+		layeredPane.setBounds(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+		holder.add(layeredPane);
+		JLayer<JComponent> layer = new JLayer<>(holder, new CapaEscalado(SCREEN_WIDTH, SCREEN_HEIGHT));
+		add(layer);
+
+		// El glass pane intercepta el ratón y lo convierte a coordenadas del juego
+		setGlassPane(new RatonEscalado(layer, holder, SCREEN_WIDTH, SCREEN_HEIGHT));
+		getGlassPane().setVisible(true);
+
+		// F11 para pantalla completa
+		getRootPane().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW)
+		        .put(KeyStroke.getKeyStroke("F11"), "fullscreen");
+		getRootPane().getActionMap().put("fullscreen", new AbstractAction() {
+		    @Override
+		    public void actionPerformed(ActionEvent e) {
+		        activarPantallaCompleta();
+		    }
+		});
 
 		music.play("/Resources/SFX/Music/TitleScreen.wav");
 	}
 
+	public void activarPantallaCompleta() {
+	    GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
+	    if (!fullscreen) {
+	        dispose();                 // setUndecorated solo funciona con la ventana cerrada
+	        setUndecorated(true);
+	        gd.setFullScreenWindow(this);
+	    } else {
+	        gd.setFullScreenWindow(null);
+	        dispose();
+	        setUndecorated(false);
+	        setVisible(true);
+	        setLocationRelativeTo(null);
+	    }
+	    fullscreen = !fullscreen;
+
+	    // Devolvemos el foco a la pantalla que esté activa
+	    javax.swing.SwingUtilities.invokeLater(() -> {
+	        if (gameover.isVisible())      gameover.requestFocus();
+	        else if (pause.isVisible())    pause.requestFocus();
+	        else if (credits.isVisible())  credits.requestFocus();
+	        else if (intro.isVisible())    intro.requestFocus();
+	        else if (gamepanel.isVisible()) gamepanel.requestFocus();
+	        else                           mainmenu.requestFocus();
+	    });
+	}
+	
 	public GamePanel getGamePanel() {
 		return gamepanel;
 	}
