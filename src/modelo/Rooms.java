@@ -342,7 +342,7 @@ public class Rooms {
 																										{56,49,49,49,49,49,65,71,71,66,49,49,49,49,49,59}},
 		};
 
-		SalaActual=0;
+		SalaActual=23;
 		room12Complete=false;
 		room12Enemies=5;
 		keysDoorRoom21=3;
