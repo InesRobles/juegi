@@ -73,7 +73,7 @@ public class FollowerEnemy extends Enemy {
 				if (dyingTimer == 0) {
 					sound.play("/Resources/SFX/Soundeffects/EnemyDie.wav");
 					alive = false;
-					Item i = generateItem();
+					Item i = generateItem(player);
 					if (i != null) {
 						items.add(i);
 					}
